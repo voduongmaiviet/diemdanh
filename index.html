@@ -120,6 +120,37 @@
             0%, 100% { opacity: 0.6; }
             50% { opacity: 1; }
         }
+
+        /* Khóa vị trí cho cột STT (Cột thứ 1) */
+        #data-table th:nth-child(1),
+        #data-table td:nth-child(1) {
+            position: sticky;
+            left: 0;
+            z-index: 10;
+            background-color: #f1f5f9; /* Giữ màu nền để chữ không bị đè chồng lên nhau */
+        }
+
+        /* Khóa vị trí cho cột HỌ VÀ TÊN (Cột thứ 2) */
+        #data-table th:nth-child(2),
+        #data-table td:nth-child(2) {
+            position: sticky;
+            left: 45px; /* Chiều rộng ước tính của cột STT để cột Họ Tên không đè lên cột STT */
+            z-index: 10;
+            background-color: #ffffff; /* Màu nền trắng cho hàng dữ liệu */
+        }
+
+        /* Đảm bảo tiêu đề cột STT và Họ Tên nằm trên cùng khi cuộn dọc và cuộn ngang */
+        #data-table th:nth-child(1),
+        #data-table th:nth-child(2) {
+            z-index: 15;
+            background-color: #f1f5f9; /* Màu nền tiêu đề */
+        }
+
+        /* Đổ bóng nhẹ một chút ở viền bên phải cột Họ Tên để tạo cảm giác tách biệt khi cuộn */
+        #data-table th:nth-child(2),
+        #data-table td:nth-child(2) {
+            border-right: 2px solid #cbd5e1 !important;
+        }
     </style>
 </head>
 <body>
