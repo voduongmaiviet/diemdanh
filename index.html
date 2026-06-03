@@ -77,6 +77,49 @@
 
         .toast { position: fixed; bottom: 20px; right: 20px; background-color: #2c3e50; color: white; padding: 12px 24px; border-radius: 6px; display: none; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
         .loading-box { text-align: center; padding: 20px; font-weight: bold; color: var(--primary-color); display: none; }
+
+        /* Thiết kế khung bao ngoài chứa bộ Loading */
+        .loading-box {
+            display: none; /* Mặc định ẩn, chỉ hiện khi gọi qua JS */
+            text-align: center;
+            padding: 30px 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin: 15px 0;
+        }
+
+        /* Tạo vòng tròn xoay 360 độ sống động */
+        .spinner {
+            width: 45px;
+            height: 45px;
+            border: 4px solid #e2e8f0;       /* Lớp nền vòng tròn xám nhạt */
+            border-top: 4px solid #e74c3c;   /* Màu đỏ accent chủ đạo của võ đường làm điểm nhấn */
+            border-radius: 50%;              /* Bo tròn tuyệt đối thành hình cầu */
+            margin: 0 auto 12px auto;        /* Căn giữa */
+            animation: spin 0.8s linear infinite; /* Chạy xoay tròn vô hạn mượt mà */
+        }
+
+        /* Dòng chữ thông báo trạng thái phía dưới */
+        .loading-text {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #2c3e50;
+            letter-spacing: 0.5px;
+            animation: pulse 1.5s ease-in-out infinite; /* Hiệu ứng chữ chớp nháy nhẹ nhàng */
+        }
+
+        /* Định nghĩa hiệu ứng xoay tròn */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Định nghĩa hiệu ứng mờ tỏ của dòng chữ */
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
     </style>
 </head>
 <body>
@@ -119,7 +162,11 @@
                 </div>
             </div>
 
-            <div id="loading-indicator" class="loading-box">🔄 Đang đồng bộ cổng dữ liệu từ Google Sheets...</div>
+            <!-- Khung Loading thiết kế chuyển động sống động -->
+            <div id="loading-indicator" class="loading-box">
+                <div class="spinner"></div>
+                <div class="loading-text">ĐANG TẢI DỮ LIỆU</div>
+            </div>
 
             <div class="table-container">
                 <table id="data-table">
